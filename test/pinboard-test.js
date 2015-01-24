@@ -47,3 +47,51 @@ describe('An HTTP pinboard.js user', function () {
     });
   });
 });
+
+describe('An API pinboard.js user', function () {
+  pinboardUtils.init({
+    auth: {
+      type: 'token',
+      username: 'todd',
+      token: 'password'
+    }
+  });
+
+  describe('building a URL', function () {
+    pinboardUtils.execSync(function buildUrl () {
+      return this.client.buildUrl({
+        pathname: '/posts/get',
+        query: {
+          tag: 'hello'
+        }
+      });
+    });
+
+    it('receives a valid URL', function () {
+      var expectedUrl = 'https://todd:password@api.pinboard.in/v1/posts/get?auth_token=todd:password&tag=hello';
+      expect(this.result).to.equal(expectedUrl);
+    });
+  });
+});
+
+describe('A pinboard.js user', function () {
+  pinboardUtils.init({
+    // test-credentials = {type, username, token}
+    auth: require('./test-credentials')
+  });
+
+  describe('building a URL', function () {
+    pinboardUtils.execSync(function buildUrl () {
+      return this.client.buildUrl({
+        pathname: '/posts/get',
+        query: {
+          tag: 'hello'
+        }
+      });
+    });
+
+    it('receives a valid URL', function () {
+      expect(this.result).to.equal('https://todd:password@api.pinboard.in/v1/posts/get?tag=hello');
+    });
+  });
+});
