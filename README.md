@@ -24,6 +24,17 @@ _(Coming soon)_
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.
 
+### Testing
+We currently require an active Pinboard account for testing. Please output your `auth` parameters for the `Pinboard` constructor into `test/test-credentials.json` before running the tests. These are `.gitignore'd` and should present no issue.
+
+```js
+{
+    "type": "token",
+    "username": "twolfson",
+    "token": "abcdef..."
+}
+```
+
 ## Donating
 Support this project and [others by twolfson][gratipay] via [gratipay][].
 
