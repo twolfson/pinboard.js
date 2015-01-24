@@ -1,0 +1,45 @@
+{
+  "name": "pinboard.js",
+  "description": "Library for talking to Pinboard API",
+  "version": "1.0.0",
+  "homepage": "https://github.com/twolfson/pinboard.js",
+  "author": {
+    "name": "Todd Wolfson",
+    "email": "todd@twolfson.com",
+    "url": "http://twolfson.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twolfson/pinboard.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/twolfson/pinboard.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "UNLICENSE",
+      "url": "https://github.com/twolfson/pinboard.js/blob/master/UNLICENSE"
+    }
+  ],
+  "main": "lib/pinboard.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "precheck": "twolfson-style precheck lib/ test/",
+    "lint": "twolfson-style lint lib/ test/",
+    "pretest": "twolfson-style install",
+    "test": "npm run precheck && mocha --reporter dot && npm run lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jscs": "~1.7.3",
+    "jshint": "~2.5.10",
+    "mocha": "~1.11.0",
+    "twolfson-style": "~1.6.0"
+  },
+  "keywords": [
+    "pinboard",
+    "api"
+  ]
+}
