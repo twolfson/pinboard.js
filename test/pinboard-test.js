@@ -8,3 +8,4 @@ describe('pinboard.js', function () {
     assert.strictEqual(pinboardJs(), 'awesome');
   });
 });
+
