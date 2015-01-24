@@ -98,13 +98,12 @@ describe('A pinboard.js user', function () {
 
   describe('requesting an update page', function () {
     pinboardUtils.execRequest(function buildUrl (done) {
-      this.client.postsUpdate({}, done);
+      this.client.postsUpdate(null, done);
     });
 
     it('receives a valid response', function () {
       // TODO: Use eight-track to force response value
       expect(this.err).to.equal(null);
-      console.log(this.body);
       expect(this.res.statusCode).to.equal(200);
       // expect(this.body).to.equal(200);
     });
