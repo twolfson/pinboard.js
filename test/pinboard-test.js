@@ -13,11 +13,27 @@ var pinboardUtils = {
     });
   },
   execSync: function (fn) {
-    before(function execFn () {
+    before(function execSyncFn () {
       this.result = fn.call(this);
     });
     after(function cleanup () {
       delete this.result;
+    });
+  },
+  execRequest: function (fn) {
+    before(function execRequestFn (done) {
+      var that = this;
+      fn.call(this, function handleResponse (err, res, body) {
+        that.err = err;
+        that.res = res;
+        that.body = body;
+        done();
+      });
+    });
+    after(function cleanup () {
+      delete this.err;
+      delete this.res;
+      delete this.body;
     });
   }
 };
@@ -68,7 +84,7 @@ describe('An API pinboard.js user', function () {
     });
 
     it('receives a valid URL', function () {
-      var expectedUrl = 'https://todd:password@api.pinboard.in/v1/posts/get?auth_token=todd:password&tag=hello';
+      var expectedUrl = 'https://api.pinboard.in/v1/posts/get?auth_token=todd%3Apassword&tag=hello';
       expect(this.result).to.equal(expectedUrl);
     });
   });
@@ -80,18 +96,17 @@ describe('A pinboard.js user', function () {
     auth: require('./test-credentials')
   });
 
-  describe('building a URL', function () {
-    pinboardUtils.execSync(function buildUrl () {
-      return this.client.buildUrl({
-        pathname: '/posts/get',
-        query: {
-          tag: 'hello'
-        }
-      });
+  describe('requesting an update page', function () {
+    pinboardUtils.execRequest(function buildUrl (done) {
+      this.client.postsUpdate({}, done);
     });
 
-    it('receives a valid URL', function () {
-      expect(this.result).to.equal('https://todd:password@api.pinboard.in/v1/posts/get?tag=hello');
+    it('receives a valid response', function () {
+      // TODO: Use eight-track to force response value
+      expect(this.err).to.equal(null);
+      console.log(this.body);
+      expect(this.res.statusCode).to.equal(200);
+      // expect(this.body).to.equal(200);
     });
   });
 });
