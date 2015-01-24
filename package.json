@@ -21,7 +21,8 @@
       "url": "https://github.com/twolfson/pinboard.js/blob/master/UNLICENSE"
     }
   ],
-  "main": "lib/pinboard.js",
+  "browser": "lib/browser.js",
+  "main": "lib/node.js",
   "engines": {
     "node": ">= 0.8.0"
   },
