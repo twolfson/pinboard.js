@@ -1,13 +1,18 @@
 # pinboard.js [![Build status](https://travis-ci.org/twolfson/pinboard.js.png?branch=master)](https://travis-ci.org/twolfson/pinboard.js)
 
-Library for talking to Pinboard API
+Library for talking to the [Pinboard][] API
+
+This was written as part of [`firefox-pinboard`][] to communicate with [Pinboard][].
+
+[Pinboard]: http://pinboard.in/
+[`firefox-pinboard`]: https://github.com/twolfson/firefox-pinboard
 
 ## Getting Started
 Install the module with: `npm install pinboard.js`
 
 ```js
-var pinboardJs = require('pinboard.js');
-pinboardJs(); // 'awesome'
+var pinboard = require('pinboard.js');
+pinboard(); // 'awesome'
 ```
 
 ## Documentation
