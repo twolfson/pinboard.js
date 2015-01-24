@@ -1,5 +1,5 @@
 // Load in dependencies
-var assert = require('assert');
+var expect = require('chai').expect;
 var Pinboard = require('../');
 
 // Define test utilities
