@@ -8,7 +8,10 @@ exports.run = function () {
   before(function runFn () {
     server = http.createServer(eightTrack({
       url: 'https://api.pinboard.in',
-      fixtureDir: __dirname + '/../test-files/pinboard-eight-track/'
+      fixtureDir: __dirname + '/../test-files/pinboard-eight-track/',
+      normalizeFn: function (info) {
+        delete info.url;
+      }
     }));
     server.listen(9001);
   });
