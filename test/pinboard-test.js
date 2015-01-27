@@ -1,5 +1,6 @@
 // Load in dependencies
 var expect = require('chai').expect;
+var FakePinboard = require('./utils/fake-pinboard');
 var Pinboard = require('../');
 
 // Define test utilities
@@ -91,6 +92,7 @@ describe('An API pinboard.js user', function () {
 });
 
 describe('A pinboard.js user', function () {
+  FakePinboard.run();
   pinboardUtils.init({
     // test-credentials = {type, username, token}
     // TODO: Require in a common location
