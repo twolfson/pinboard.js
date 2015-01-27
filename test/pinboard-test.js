@@ -98,7 +98,7 @@ describe('A pinboard.js user', function () {
 
   describe('requesting an update page', function () {
     pinboardUtils.execRequest(function buildUrl (done) {
-      this.client.postsUpdate(null, done);
+      this.client.postsUpdate({format: 'json'}, done);
     });
 
     it('receives a valid response', function () {
