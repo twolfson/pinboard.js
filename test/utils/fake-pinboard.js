@@ -15,6 +15,7 @@ exports.run = function () {
   after(function cleanup (done) {
     server.close(function handleClose (err) {
       server = null;
+      done();
     });
   });
 };
