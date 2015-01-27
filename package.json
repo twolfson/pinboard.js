@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "chai": "~1.10.0",
+    "eight-track": "~2.1.0",
     "jscs": "~1.7.3",
     "jshint": "~2.5.10",
     "mocha": "~1.11.0",

@@ -93,7 +93,15 @@ describe('An API pinboard.js user', function () {
 describe('A pinboard.js user', function () {
   pinboardUtils.init({
     // test-credentials = {type, username, token}
-    auth: require('./test-credentials')
+    // TODO: Require in a common location
+    auth: require('./test-credentials'),
+    // TODO: Define in a common location
+    url: {
+      protocol: 'http:',
+      hostname: 'localhost',
+      port: 9001,
+      pathname: '/v1'
+    }
   });
 
   describe('requesting an update page', function () {
