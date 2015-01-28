@@ -91,12 +91,24 @@ describe('An API pinboard.js user', function () {
   });
 });
 
+var credentials;
+try {
+  // test-credentials = {type, username, token}
+  credentials = require('./test-credentials');
+} catch (err) {
+  console.error('Error while loading `test/test-credentials.json`. ' +
+      'Assuming we want to use `nine-track` fixtures, using default credentials. ' +
+      'If not, please see Testing section in `README.md`', err);
+  credentials = {
+    type: 'token',
+    username: 'testuser',
+    token: 'abcdef'
+  };
+}
 describe('A pinboard.js user', function () {
   FakePinboard.run();
   pinboardUtils.init({
-    // test-credentials = {type, username, token}
-    // TODO: Require in a common location
-    auth: require('./test-credentials'),
+    auth: credentials,
     // TODO: Define in a common location
     url: {
       protocol: 'http:',
