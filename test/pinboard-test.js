@@ -91,7 +91,11 @@ describe('An API pinboard.js user', function () {
   });
 });
 
-var credentials;
+var credentials = {
+  type: 'token',
+  username: 'testuser',
+  token: 'abcdef'
+};
 try {
   // test-credentials = {type, username, token}
   credentials = require('./test-credentials');
@@ -99,23 +103,18 @@ try {
   console.error('Error while loading `test/test-credentials.json`. ' +
       'Assuming we want to use `nine-track` fixtures, using default credentials. ' +
       'If not, please see Testing section in `README.md`', err);
-  credentials = {
-    type: 'token',
-    username: 'testuser',
-    token: 'abcdef'
-  };
 }
+var fakePinboardUrl = {
+  protocol: 'http:',
+  hostname: 'localhost',
+  port: 9001,
+  pathname: '/v1'
+};
 describe('A pinboard.js user', function () {
   FakePinboard.run();
   pinboardUtils.init({
     auth: credentials,
-    // TODO: Define in a common location
-    url: {
-      protocol: 'http:',
-      hostname: 'localhost',
-      port: 9001,
-      pathname: '/v1'
-    }
+    url: fakePinboardUrl
   });
 
   describe('requesting an update page', function () {
@@ -124,10 +123,8 @@ describe('A pinboard.js user', function () {
     });
 
     it('receives a valid response', function () {
-      // TODO: Use eight-track to force response value
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
-      // expect(this.body).to.equal(200);
     });
   });
 });
