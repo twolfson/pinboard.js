@@ -1,10 +1,11 @@
 # pinboard.js [![Build status](https://travis-ci.org/twolfson/pinboard.js.png?branch=master)](https://travis-ci.org/twolfson/pinboard.js)
 
-Library for talking to the [Pinboard][] API
+Library for talking to the [Pinboard API][]
 
 This was written as part of [`firefox-pinboard`][] to communicate with [Pinboard][]. We chose to write `pinboard.js` to allow for handling of errors that previous libraries did not expose (e.g. `ECONNREFUSED`).
 
 [Pinboard]: http://pinboard.in/
+[Pinboard API]: https://pinboard.in/api/
 [`firefox-pinboard`]: https://github.com/twolfson/firefox-pinboard
 
 ## Getting Started
