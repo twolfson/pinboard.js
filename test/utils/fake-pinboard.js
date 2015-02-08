@@ -2,10 +2,10 @@
 var url = require('url');
 var FixedServer = require('fixed-server');
 var nineTrack = require('nine-track');
+var config = require('./utils/config');
 
 // Define our FakePinboard server
-// TODO: Use common location to resolve port
-var fakePinboard = new FixedServer({port: 9001});
+var fakePinboard = new FixedServer({port: config.fakePinboardUrl.port});
 var pinboardNineTrack = nineTrack({
   url: 'https://api.pinboard.in',
   fixtureDir: __dirname + '/../test-files/pinboard-nine-track/',

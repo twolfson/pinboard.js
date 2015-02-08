@@ -1,43 +1,8 @@
 // Load in dependencies
 var expect = require('chai').expect;
+var config = require('./utils/config');
 var fakePinboard = require('./utils/fake-pinboard');
-var Pinboard = require('../');
-
-// Define test utilities
-var pinboardUtils = {
-  init: function (params) {
-    before(function createClient () {
-      this.client = new Pinboard(params);
-    });
-    after(function cleanup () {
-      delete this.client;
-    });
-  },
-  execSync: function (fn) {
-    before(function execSyncFn () {
-      this.result = fn.call(this);
-    });
-    after(function cleanup () {
-      delete this.result;
-    });
-  },
-  execRequest: function (fn) {
-    before(function execRequestFn (done) {
-      var that = this;
-      fn.call(this, function handleResponse (err, res, body) {
-        that.err = err;
-        that.res = res;
-        that.body = body;
-        done();
-      });
-    });
-    after(function cleanup () {
-      delete this.err;
-      delete this.res;
-      delete this.body;
-    });
-  }
-};
+var pinboardUtils = require('./utils/pinboard');
 
 // Start our tests
 describe('An HTTP pinboard.js user', function () {
@@ -91,30 +56,11 @@ describe('An API pinboard.js user', function () {
   });
 });
 
-var credentials = {
-  type: 'token',
-  username: 'testuser',
-  token: 'abcdef'
-};
-try {
-  // test-credentials = {type, username, token}
-  credentials = require('./test-credentials');
-} catch (err) {
-  console.error('Error while loading `test/test-credentials.json`. ' +
-      'Assuming we want to use `nine-track` fixtures, using default credentials. ' +
-      'If not, please see Testing section in `README.md`', err);
-}
-var fakePinboardUrl = {
-  protocol: 'http:',
-  hostname: 'localhost',
-  port: 9001,
-  pathname: '/v1'
-};
 describe('A pinboard.js user', function () {
   fakePinboard.run(['ALL * *']);
   pinboardUtils.init({
-    auth: credentials,
-    url: fakePinboardUrl
+    auth: config.credentials,
+    url: config.fakePinboardUrl
   });
 
   describe('requesting an update page', function () {
