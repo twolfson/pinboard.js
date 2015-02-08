@@ -1,6 +1,6 @@
 // Load in dependencies
 var expect = require('chai').expect;
-var FakePinboard = require('./utils/fake-pinboard');
+var fakePinboard = require('./utils/fake-pinboard');
 var Pinboard = require('../');
 
 // Define test utilities
@@ -111,7 +111,7 @@ var fakePinboardUrl = {
   pathname: '/v1'
 };
 describe('A pinboard.js user', function () {
-  FakePinboard.run();
+  fakePinboard.run(['ALL * *']);
   pinboardUtils.init({
     auth: credentials,
     url: fakePinboardUrl
