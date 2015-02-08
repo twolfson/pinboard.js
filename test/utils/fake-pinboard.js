@@ -2,7 +2,7 @@
 var url = require('url');
 var FixedServer = require('fixed-server');
 var nineTrack = require('nine-track');
-var config = require('./utils/config');
+var config = require('./config');
 
 // Define our FakePinboard server
 var fakePinboard = new FixedServer({port: config.fakePinboardUrl.port});

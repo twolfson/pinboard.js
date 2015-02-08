@@ -1,5 +1,5 @@
 // Load in dependencies
-var Pinboard = require('../');
+var Pinboard = require('../../');
 
 // Define test utilities
 exports.init = function (params) {

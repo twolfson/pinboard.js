@@ -6,7 +6,7 @@ var credentials = {
 };
 try {
   // test-credentials = {type, username, token}
-  credentials = require('./test-credentials');
+  credentials = require('../test-credentials');
 } catch (err) {
   console.error('Error while loading `test/test-credentials.json`. ' +
       'Assuming we want to use `nine-track` fixtures, using default credentials. ' +
