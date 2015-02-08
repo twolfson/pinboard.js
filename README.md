@@ -19,7 +19,9 @@ pinboard(); // 'awesome'
 ## Documentation
 _(Coming soon)_
 
-TODO: Be sure to document `format: json`
+TODO: Document `format: json`
+
+TODO: Build browser.js for dist
 
 ## Examples
 _(Coming soon)_
