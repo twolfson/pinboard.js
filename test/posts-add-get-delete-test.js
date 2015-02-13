@@ -12,13 +12,19 @@ describe('A pinboard.js user creating a post', function () {
     url: config.fakePinboardUrl
   });
   pinboardUtils.execRequest(function buildUrl (done) {
-    this.client.postsAdd({format: 'json'}, done);
+    this.client.postsAdd({
+      url: 'http://notavalidwebsite.com/',
+      description: 'Test bookmark for `pinboard.js`',
+      format: 'json'
+    }, done);
   });
 
   it('generates a post', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
-    expect(JSON.parse(this.body)).to.equal(200);
+    expect(JSON.parse(this.body)).to.deep.equal({
+      result_code: 'done'
+    });
   });
 
   describe.skip('and retrieving the post', function () {
