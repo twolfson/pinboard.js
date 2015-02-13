@@ -111,9 +111,9 @@ fakePinboard.addFixture('GET 200 /v1/user/api_token', {
       if (info.response) {
         var responseJson = JSON.parse(info.response.body);
         if (responseJson.result !== undefined) {
-          responseJson.result = responseJson.result.replace(/./, 'a');
+          responseJson.result = responseJson.result.replace(/./g, 'A');
         }
-        info.response.body = JSON.stringify(responseJson) + '\n\t';
+        info.response.body = JSON.stringify(responseJson) + '\n';
       }
     }
   }))
