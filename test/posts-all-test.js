@@ -12,7 +12,7 @@ describe('A pinboard.js user retrieving all posts', function () {
     url: config.fakePinboardUrl
   });
   pinboardUtils.execRequest(function buildUrl (done) {
-    this.client.postsDates({
+    this.client.postsAll({
       tag: 'nothing',
       format: 'json'
     }, done);
@@ -21,6 +21,6 @@ describe('A pinboard.js user retrieving all posts', function () {
   it('receives posts', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
-    expect(JSON.parse(this.body)).to.have.property('posts');
+    expect(Array.isArray(JSON.parse(this.body))).to.equal(true);
   });
 });
