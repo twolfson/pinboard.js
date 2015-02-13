@@ -15,6 +15,7 @@ describe('A pinboard.js user creating a post', function () {
     this.client.postsAdd({
       url: 'http://notavalidwebsite.com/tags',
       description: 'Test bookmark for verifying tags on `pinboard.js`',
+      tags: 'test-tag',
       format: 'json'
     }, done);
   });
@@ -33,15 +34,14 @@ describe('A pinboard.js user creating a post', function () {
     });
   });
 
-  describe('and retrieving the post', function () {
+  describe('and retrieving the tags', function () {
     pinboardUtils.execRequest(function buildUrl (done) {
-      this.client.postsGet({
-        url: 'http://notavalidwebsite.com/',
+      this.client.tagsGet({
         format: 'json'
       }, done);
     });
 
-    it('receives the original post', function () {
+    it('receives the new tag', function () {
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
       expect(JSON.parse(this.body)).to.have.property('posts');
@@ -50,15 +50,16 @@ describe('A pinboard.js user creating a post', function () {
       expect(JSON.parse(this.body).posts[0]).to.have.property('href', 'http://notavalidwebsite.com/');
     });
 
-    describe('and deleting the post', function () {
+    describe('and renaming the tag', function () {
       pinboardUtils.execRequest(function buildUrl (done) {
-        this.client.postsDelete({
-          url: 'http://notavalidwebsite.com/',
+        this.client.tagsRename({
+          old: 'test-tag',
+          'new': 'test-tag2',
           format: 'json'
         }, done);
       });
 
-      it('deletes the post', function () {
+      it('has no errors', function () {
         expect(this.err).to.equal(null);
         expect(this.res.statusCode).to.equal(200);
         expect(JSON.parse(this.body)).to.deep.equal({
@@ -66,19 +67,21 @@ describe('A pinboard.js user creating a post', function () {
         });
       });
 
-      describe('and retrieving the deleted post', function () {
+      describe('and deleting the tag', function () {
         pinboardUtils.execRequest(function buildUrl (done) {
-          this.client.postsGet({
-            url: 'http://notavalidwebsite.com/',
+          this.client.tagsDelete({
+            tag: 'test-tag2',
             format: 'json'
           }, done);
         });
 
-        it('retrieves nothing', function () {
+        it('has no errors', function () {
           expect(this.err).to.equal(null);
           expect(this.res.statusCode).to.equal(200);
           expect(JSON.parse(this.body)).to.have.property('posts');
-          expect(JSON.parse(this.body).posts).to.have.length(0);
+          expect(JSON.parse(this.body)).to.deep.equal({
+            result_code: 'done'
+          });
         });
       });
     });
