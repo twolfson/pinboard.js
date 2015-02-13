@@ -59,5 +59,17 @@ fakePinboard.addFixture('ALL * *', {
   response: pinboardNineTrack
 });
 
+// Add custom methods to start/stop `nine-track` series
+// DEV: We keep key and fixtures together to prevent fragmentations. This should be all or nothing for a test case.
+fakePinboard.runSeries = function (key, fixtures) {
+  before(function startSeries () {
+    pinboardNineTrack.startSeries(key);
+  });
+  after(function stopSeries () {
+    pinboardNineTrack.stopSeries();
+  });
+  fakePinboard.run(fixtures);
+};
+
 // Expose our fake server
 module.exports = fakePinboard;
