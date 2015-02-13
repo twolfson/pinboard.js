@@ -6,7 +6,7 @@ var Pinboard = require('./pinboard');
 Pinboard.request = require('browser-request');
 
 // Export our module
-module.exports = Pinboard;
+window.Pinboard = module.exports = Pinboard;
 
 },{"./pinboard":2,"browser-request":3}],2:[function(require,module,exports){
 // Load in our dependencies
