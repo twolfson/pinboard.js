@@ -4,6 +4,8 @@ Library for talking to the [Pinboard API][]
 
 This was written as part of [`firefox-pinboard`][] to communicate with [Pinboard][]. We chose to write `pinboard.js` to allow for handling of errors that previous libraries did not expose (e.g. `ECONNREFUSED`).
 
+TODO: Build browser.js for dist
+
 [Pinboard]: http://pinboard.in/
 [Pinboard API]: https://pinboard.in/api/
 [`firefox-pinboard`]: https://github.com/twolfson/firefox-pinboard
@@ -168,40 +170,69 @@ https://pinboard.in/api#posts_all
 
 **This is endpoint is rate limited to 1 request per 5 minutes.**
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsSuggest(options, cb)`
+Return popular and recommended tags for a URL
+
 https://pinboard.in/api#posts_suggest
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `tagsGet(options, cb)`
+Return object mapping tags to usage counts
+
 https://pinboard.in/api/#tags_get
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `tagsDelete(options, cb)`
+Delete a given tag
+
 https://pinboard.in/api/#tags_delete
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `tagsRename(options, cb)`
+Rename an existing tag or merge it into another tag
+
 https://pinboard.in/api/#tags_rename
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `userSecret(options, cb)`
+Returns your secret RSS key for viewing private feeds
+
 https://pinboard.in/api/#user_secret
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `userApiToken(options, cb)`
+Returns your API token
+
 https://pinboard.in/api/#user_api_token
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `notesList(options, cb)`
+Returns a list of your notes
+
 https://pinboard.in/api/
 
 > No good link anchor provided.
+
+- See [Methods](#methods) for `options` and `cb` documentation
 
 ### `notesId(options, cb)`
+Returns a detailed information about a specific note
+
 https://pinboard.in/api/
 
 > No good link anchor provided.
 
-// TODO: Make comment about how this breaks this mold
-// Extract id from options
-var cleanedOptions = xtend({}, options);
-delete cleanedOptions.id;
-
-TODO: Build browser.js for dist
+- See [Methods](#methods) for `options` and `cb` documentation
+- This method has an additional parameter for `options` as it is inconsistent with the rest of the API
+    - id `String` - 20 character hash to access note by
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.
