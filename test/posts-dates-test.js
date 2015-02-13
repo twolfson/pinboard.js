@@ -21,6 +21,7 @@ describe('A pinboard.js user retrieving dates of posts', function () {
   it('receives post dates', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
+    // {"user":"twolfson","tag":"nothing","dates":[]}
     expect(JSON.parse(this.body)).to.have.property('tag', 'nothing');
     expect(JSON.parse(this.body)).to.have.property('dates');
   });

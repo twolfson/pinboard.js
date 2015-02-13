@@ -21,6 +21,7 @@ describe('A pinboard.js user retrieving all posts', function () {
   it('receives posts', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
+    // []
     expect(Array.isArray(JSON.parse(this.body))).to.equal(true);
   });
 });

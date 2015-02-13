@@ -39,6 +39,7 @@ describe('A pinboard.js user creating a post', function () {
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
       expect(JSON.parse(this.body)).to.have.property('posts');
+      // {"date":"2015-02-13T06:27:59Z","user":"twolfson","posts":[{"href","description","extended",...}]}
       expect(JSON.parse(this.body).posts).to.have.length(1);
       expect(JSON.parse(this.body).posts[0]).to.have.property('href', 'http://notavalidwebsite.com/');
     });

@@ -21,6 +21,7 @@ describe('A pinboard.js user retrieving recent posts', function () {
   it('receives posts', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
+    // {"date":"2013-04-01T06:31:50Z","user":"twolfson","posts":[{"href":...}]}
     expect(JSON.parse(this.body)).to.have.property('posts');
   });
 });
