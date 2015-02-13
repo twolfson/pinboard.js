@@ -6,8 +6,7 @@ var pinboardUtils = require('./utils/pinboard');
 
 // Start our tests
 describe('A pinboard.js user creating a post', function () {
-  // TODO: Start eight-track series here
-  fakePinboard.run(['GET 200 /v1/posts/update']);
+  fakePinboard.runSeries('posts-add-get-delete', ['ALL * *']);
   pinboardUtils.init({
     auth: config.credentials,
     url: config.fakePinboardUrl

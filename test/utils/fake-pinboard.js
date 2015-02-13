@@ -1,4 +1,5 @@
 // Load in depdendencies
+var assert = require('assert');
 var url = require('url');
 var FixedServer = require('fixed-server');
 var nineTrack = require('nine-track');
@@ -62,6 +63,8 @@ fakePinboard.addFixture('ALL * *', {
 // Add custom methods to start/stop `nine-track` series
 // DEV: We keep key and fixtures together to prevent fragmentations. This should be all or nothing for a test case.
 fakePinboard.runSeries = function (key, fixtures) {
+  assert(key, '`fakePinboard.runSeries` requires `key` to run. Please provide it');
+  assert(fixtures, '`fakePinboard.runSeries` requires `fixtures` to run. Please provide it');
   before(function startSeries () {
     pinboardNineTrack.startSeries(key);
   });
