@@ -44,10 +44,7 @@ describe('A pinboard.js user creating a post', function () {
     it('receives the new tag', function () {
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
-      expect(JSON.parse(this.body)).to.have.property('posts');
-      // {"date":"2015-02-13T06:27:59Z","user":"twolfson","posts":[{"href","description","extended",...}]}
-      expect(JSON.parse(this.body).posts).to.have.length(1);
-      expect(JSON.parse(this.body).posts[0]).to.have.property('href', 'http://notavalidwebsite.com/');
+      expect(JSON.parse(this.body)).to.have.property('test-tag', 1);
     });
 
     describe('and renaming the tag', function () {
@@ -62,8 +59,9 @@ describe('A pinboard.js user creating a post', function () {
       it('has no errors', function () {
         expect(this.err).to.equal(null);
         expect(this.res.statusCode).to.equal(200);
+        // TODO: Make note of inconsistent `result` response key
         expect(JSON.parse(this.body)).to.deep.equal({
-          result_code: 'done'
+          result: 'done'
         });
       });
 
@@ -78,7 +76,6 @@ describe('A pinboard.js user creating a post', function () {
         it('has no errors', function () {
           expect(this.err).to.equal(null);
           expect(this.res.statusCode).to.equal(200);
-          expect(JSON.parse(this.body)).to.have.property('posts');
           expect(JSON.parse(this.body)).to.deep.equal({
             result_code: 'done'
           });
