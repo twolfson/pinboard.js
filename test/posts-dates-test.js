@@ -18,7 +18,7 @@ describe('A pinboard.js user retrieving dates of posts', function () {
     }, done);
   });
 
-  it('receives a posts', function () {
+  it('receives post dates', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
     expect(JSON.parse(this.body)).to.have.property('tag', 'nothing');

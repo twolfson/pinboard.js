@@ -5,15 +5,15 @@ var fakePinboard = require('./utils/fake-pinboard');
 var pinboardUtils = require('./utils/pinboard');
 
 // Start our tests
-describe('A pinboard.js user retrieving recent posts', function () {
+describe('A pinboard.js user retrieving all posts', function () {
   fakePinboard.run(['ALL * *']);
   pinboardUtils.init({
     auth: config.credentials,
     url: config.fakePinboardUrl
   });
   pinboardUtils.execRequest(function buildUrl (done) {
-    this.client.postsRecent({
-      count: 1,
+    this.client.postsDates({
+      tag: 'nothing',
       format: 'json'
     }, done);
   });
