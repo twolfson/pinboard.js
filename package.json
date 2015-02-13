@@ -27,16 +27,21 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
+    "build-browserify": "browserify lib/browser.js > dist/pinboard.js",
+    "build-uglify": "uglifyjs dist/pinboard.js > dist/pinboard.min.js",
+    "build": "npm run build-browserify && npm run build-uglify",
     "precheck": "twolfson-style precheck lib/ test/",
     "lint": "twolfson-style lint lib/ test/",
     "pretest": "twolfson-style install",
     "test": "npm run precheck && mocha --reporter dot && npm run lint"
   },
   "dependencies": {
+    "browser-request": "~0.3.3",
     "request": "~2.51.0",
     "xtend": "~4.0.0"
   },
   "devDependencies": {
+    "browserify": "~8.1.3",
     "chai": "~1.10.0",
     "eight-track": "~2.1.0",
     "fixed-server": "~0.4.0",
@@ -44,7 +49,8 @@
     "jshint": "~2.5.10",
     "mocha": "~1.11.0",
     "nine-track": "~1.4.0",
-    "twolfson-style": "~1.6.0"
+    "twolfson-style": "~1.6.0",
+    "uglify-js": "~2.4.16"
   },
   "keywords": [
     "pinboard",
