@@ -99,6 +99,26 @@ fakePinboard.addFixture('GET 200 /v1/user/secret', {
   }))
 });
 
+fakePinboard.addFixture('GET 200 /v1/user/api_token', {
+  method: 'get',
+  route: '/v1/user/api_token',
+  response: nineTrack(xtend({}, pinboardNineTrackOptions, {
+    scrubFn: function (info) {
+      // Normalize/scrub authentication info with original fn
+      pinboardNineTrackOptions.scrubFn.call(this, info);
+
+      // If we have a response, scrub it
+      if (info.response) {
+        var responseJson = JSON.parse(info.response.body);
+        if (responseJson.result !== undefined) {
+          responseJson.result = responseJson.result.replace(/./, 'a');
+        }
+        info.response.body = JSON.stringify(responseJson) + '\n\t';
+      }
+    }
+  }))
+});
+
 // Add a method to proxy anything
 fakePinboard.addFixture('ALL * *', {
   method: 'all',
