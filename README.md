@@ -12,8 +12,21 @@ This was written as part of [`firefox-pinboard`][] to communicate with [Pinboard
 Install the module with: `npm install pinboard.js`
 
 ```js
-var pinboard = require('pinboard.js');
-pinboard(); // 'awesome'
+// Create a client
+// API token can be found at: https://pinboard.in/settings/password
+var Pinboard = require('pinboard.js');
+var pinboard = new Pinboard({
+  auth: {
+    type: 'token',
+    username: 'your-username',
+    token: 'your-token'
+  }
+});
+
+// Find out when we last updated a post
+pinboard.postsUpdate({
+  format: 'json'
+}, console.log); // {"update_time":"2015-02-13T09:08:22Z"}
 ```
 
 ## Documentation
@@ -34,9 +47,9 @@ We currently require an active Pinboard account for testing. Please output your 
 
 ```js
 {
-    "type": "token",
-    "username": "twolfson",
-    "token": "abcdef..."
+  "type": "token",
+  "username": "twolfson",
+  "token": "abcdef..."
 }
 ```
 
