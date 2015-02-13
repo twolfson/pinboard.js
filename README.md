@@ -79,7 +79,29 @@ new Pinboard({
 });
 ```
 
-TODO: Document `format: json`
+### Methods
+All methods are light wrappers around the Pinboard API.
+
+https://pinboard.in/api
+
+The function signature will consistently be:
+
+`(options, cb)`
+
+- options `Object` - Parameters to pass through to Pinboard API
+    - For example, if the endpoint says it requires `url`, then you must pass in something like `{url: 'http://mywebsite.com/'}`
+    - format `String` - Format to output content as
+        - This can be `json` or `xml`
+        - We will not parse the output content (e.g. JSON will be a `String`)
+        - By default, Pinboard will return `xml`
+
+**Example request for JSON:**
+
+```js
+pinboard.postsUpdate({
+  format: 'json'
+}, console.log); // {"update_time":"2015-02-13T09:08:22Z"}
+```
 
 TODO: Build browser.js for dist
 
