@@ -111,8 +111,10 @@ The function signature will consistently be:
 
 ```js
 pinboard.postsUpdate({
+  url: 'http://pinboard.in/',
+  description: 'Great bookmarking site',
   format: 'json'
-}, console.log); // {"update_time":"2015-02-13T09:08:22Z"}
+}, console.log); // {"result_code":"done"}
 ```
 
 ### `pinboard.postsUpdate(options, cb)`
@@ -127,20 +129,44 @@ Add a new bookmark
 
 https://pinboard.in/api#posts_add
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsDelete(options, cb)`
+Delete a given bookmark
+
 https://pinboard.in/api#posts_delete
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsGet(options, cb)`
+Return matching posts for a given search
+
 https://pinboard.in/api#posts_get
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsRecent(options, cb)`
+Returns your most recent posts filtered by tag
+
 https://pinboard.in/api#posts_recent
 
+**This is endpoint is rate limited to 1 request per 1 minute.**
+
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsDates(options, cb)`
+Returns a listing of posts per date
+
 https://pinboard.in/api#posts_dates
 
+- See [Methods](#methods) for `options` and `cb` documentation
+
 ### `postsAll(options, cb)`
+Return all bookmark in your account
+
 https://pinboard.in/api#posts_all
+
+**This is endpoint is rate limited to 1 request per 5 minutes.**
 
 ### `postsSuggest(options, cb)`
 https://pinboard.in/api#posts_suggest
@@ -169,6 +195,7 @@ https://pinboard.in/api/
 https://pinboard.in/api/
 
 > No good link anchor provided.
+
 // TODO: Make comment about how this breaks this mold
 // Extract id from options
 var cleanedOptions = xtend({}, options);
