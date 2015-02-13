@@ -47,6 +47,7 @@ describe('A pinboard.js user creating a post', function () {
     it('receives the new tag', function () {
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
+      // {"test-tag": 1}
       expect(JSON.parse(this.body)).to.have.property('test-tag', 1);
     });
 
