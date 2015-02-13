@@ -3,11 +3,12 @@ var assert = require('assert');
 var url = require('url');
 var FixedServer = require('fixed-server');
 var nineTrack = require('nine-track');
+var xtend = require('xtend');
 var config = require('./config');
 
 // Define our FakePinboard server
 var fakePinboard = new FixedServer({port: config.fakePinboardUrl.port});
-var pinboardNineTrack = nineTrack({
+var pinboardNineTrackOptions = {
   url: 'https://api.pinboard.in',
   fixtureDir: __dirname + '/../test-files/pinboard-nine-track/',
   // Normalize/scrub authentication info
@@ -25,7 +26,8 @@ var pinboardNineTrack = nineTrack({
       req.url = url.format(urlObj);
     }
   }
-});
+};
+var pinboardNineTrack = nineTrack(pinboardNineTrackOptions);
 
 // Add per-method proxies
 fakePinboard.addFixture('GET 200 /v1/posts/update', {
@@ -75,6 +77,22 @@ fakePinboard.addFixture('GET 200 /v1/tags/get', {
       localRes.json(remoteJson);
     });
   }
+});
+
+fakePinboard.addFixture('GET /v1/user/secret', {
+  method: 'get',
+  route: '/v1/user/secret',
+  response: nineTrack(xtend({}, pinboardNineTrackOptions, {
+    scrubFn: function (info) {
+      // Normalize/scrub authentication info with original fn
+      pinboardNineTrackOptions.scrubFn.call(this, info);
+
+      // If we have a response, scrub it
+      if (info.response) {
+        console.log(info.response);
+      }
+    }
+  }))
 });
 
 // Add a method to proxy anything
