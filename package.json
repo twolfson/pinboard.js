@@ -30,10 +30,9 @@
     "build-browserify": "browserify lib/browser.js > dist/pinboard.js",
     "build-uglify": "uglifyjs dist/pinboard.js > dist/pinboard.min.js",
     "build": "npm run build-browserify && npm run build-uglify",
-    "precheck": "twolfson-style precheck lib/ test/",
     "lint": "twolfson-style lint lib/ test/",
-    "pretest": "twolfson-style install",
-    "test": "npm run precheck && mocha --reporter dot && npm run lint"
+    "_pretest": "twolfson-style install",
+    "test": "mocha --reporter dot && npm run lint"
   },
   "dependencies": {
     "browser-request": "~0.3.3",
