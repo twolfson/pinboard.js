@@ -22,7 +22,7 @@ describe('A pinboard.js user looking up their secret', function () {
     expect(this.err).to.equal(null);
     expect(this.res.statusCode).to.equal(200);
     expect(JSON.parse(this.body)).to.deep.equal({
-      result_code: 'done'
+      result: 'aaaaaaaaaaaaaaaaaaaa'
     });
   });
 });
