@@ -1,0 +1,22 @@
+{
+  "name": "pinboard.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/twolfson/pinboard.js",
+  "authors": [
+    "Todd Wolfson <todd@twolfson.com>"
+  ],
+  "description": "Library for talking to the Pinboard API",
+  "main": "dist/bower.min.js",
+  "keywords": [
+    "pinboard",
+    "api"
+  ],
+  "license": "UNLICENSE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
