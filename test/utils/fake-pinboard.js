@@ -79,7 +79,7 @@ fakePinboard.addFixture('GET 200 /v1/tags/get', {
   }
 });
 
-fakePinboard.addFixture('GET /v1/user/secret', {
+fakePinboard.addFixture('GET 200 /v1/user/secret', {
   method: 'get',
   route: '/v1/user/secret',
   response: nineTrack(xtend({}, pinboardNineTrackOptions, {
@@ -89,7 +89,11 @@ fakePinboard.addFixture('GET /v1/user/secret', {
 
       // If we have a response, scrub it
       if (info.response) {
-        console.log(info.response);
+        var responseJson = JSON.parse(info.response.body);
+        if (responseJson.result !== undefined) {
+          responseJson.result = 'abcdef';
+        }
+        info.response.body = JSON.stringify(responseJson);
       }
     }
   }))
