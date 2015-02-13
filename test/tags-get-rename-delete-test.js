@@ -36,6 +36,19 @@ describe('A pinboard.js user creating a post', function () {
     });
   });
 
+  describe('and retrieving the post', function () {
+    pinboardUtils.execRequest(function buildUrl (done) {
+      this.client.postsGet({
+        url: 'http://notavalidwebsite.com/tags',
+        format: 'json'
+      }, done);
+    });
+
+    it('looks fine', function () {
+      console.log(this.body);
+    });
+  });
+
   describe('and retrieving the tags', function () {
     pinboardUtils.execRequest(function buildUrl (done) {
       this.client.tagsGet({
