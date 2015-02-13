@@ -6,18 +6,24 @@ var pinboardUtils = require('./utils/pinboard');
 
 // Start our tests
 describe('A pinboard.js user creating a post', function () {
-  fakePinboard.runSeries('posts-add-get-delete', ['ALL * *']);
+  fakePinboard.runSeries('tests-get-rename-delete', ['ALL * *']);
   pinboardUtils.init({
     auth: config.credentials,
     url: config.fakePinboardUrl
   });
   pinboardUtils.execRequest(function buildUrl (done) {
     this.client.postsAdd({
-      url: 'http://notavalidwebsite.com/',
-      description: 'Test bookmark for `pinboard.js`',
+      url: 'http://notavalidwebsite.com/tags',
+      description: 'Test bookmark for verifying tags on `pinboard.js`',
       format: 'json'
     }, done);
   });
+  after(pinboardUtils.execRequest(function buildUrl (done) {
+    this.client.postsDelete({
+      url: 'http://notavalidwebsite.com/tags',
+      format: 'json'
+    }, done);
+  }));
 
   it('generates a post', function () {
     expect(this.err).to.equal(null);
