@@ -1,0 +1,37 @@
+{
+  "request": {
+    "httpVersion": "1.1",
+    "headers": {
+      "host": "localhost:9001",
+      "connection": "keep-alive"
+    },
+    "trailers": {},
+    "method": "GET",
+    "url": "/v1/posts/delete?auth_token=*%3A*&url=http%3A%2F%2Fnotavalidwebsite.com%2Ftags&format=json",
+    "bodyEncoding": "utf8",
+    "body": ""
+  },
+  "response": {
+    "httpVersion": "1.1",
+    "headers": {
+      "date": "Fri, 13 Feb 2015 08:27:15 GMT",
+      "server": "Apache/2.2.22 (Ubuntu)",
+      "vary": "Accept-Encoding",
+      "content-length": "23",
+      "keep-alive": "timeout=5, max=100",
+      "connection": "Keep-Alive",
+      "content-type": "text/plain; charset=utf-8"
+    },
+    "trailers": {},
+    "statusCode": 200,
+    "bodyEncoding": "utf8",
+    "body": "{\"result_code\":\"done\"}\n"
+  },
+  "pastRequestKeys": [
+    "GET_%2Fv1%2Fposts%2Fadd%3Fauth_token_9738b2604a70614a2893f853a41488e9",
+    "GET_%2Fv1%2Ftags%2Fget%3Fauth_token%_173436bfc92804451de866a549f08e1e",
+    "GET_%2Fv1%2Ftags%2Frename%3Fauth_tok_ce535e25485a91475f39a6897253a2c0",
+    "GET_%2Fv1%2Ftags%2Fdelete%3Fauth_tok_e4e6ed403ffe3fa2a871d736780fa153",
+    "GET_%2Fv1%2Fposts%2Fdelete%3Fauth_to_7674e39d7f58cdc247af93e43e02b653"
+  ]
+}

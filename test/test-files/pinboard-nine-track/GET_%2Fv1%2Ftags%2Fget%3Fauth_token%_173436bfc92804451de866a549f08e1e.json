@@ -1,0 +1,34 @@
+{
+  "request": {
+    "httpVersion": "1.1",
+    "headers": {
+      "host": "localhost:9001",
+      "connection": "keep-alive"
+    },
+    "trailers": {},
+    "method": "GET",
+    "url": "/v1/tags/get?auth_token=*%3A*&format=json",
+    "bodyEncoding": "utf8",
+    "body": ""
+  },
+  "response": {
+    "httpVersion": "1.1",
+    "headers": {
+      "date": "Fri, 13 Feb 2015 08:27:14 GMT",
+      "server": "Apache/2.2.22 (Ubuntu)",
+      "vary": "Accept-Encoding",
+      "content-length": "1241",
+      "keep-alive": "timeout=5, max=100",
+      "connection": "Keep-Alive",
+      "content-type": "text/plain; charset=utf-8"
+    },
+    "trailers": {},
+    "statusCode": 200,
+    "bodyEncoding": "utf8",
+    "body": "{\"algorithms\\/data_objects\":\"4\",\"async_libs\":\"4\",\"beautifiers\":\"6\",\"benchmarking\":\"1\",\"code_collections_(microjs_and_whatnot)\":\"8\",\"code_learning_(basic)\":\"5\",\"collaboration\":\"10\",\"colors\\/patterns\\/gradients\":\"6\",\"css_borders\\/shapes\":\"11\",\"css_patterns_(oocss)\":\"1\",\"css_scripting\":\"3\",\"css_sprites\\/backgrounds\":\"2\",\"debugging\":\"3\",\"design_learning\":\"2\",\"design_resources\":\"8\",\"documentation\":\"6\",\"dom\":\"4\",\"domain_tools\":\"3\",\"email\":\"1\",\"evertything_else_css\\/design\":\"12\",\"feature_detection\\/shims\":\"5\",\"feed_tools\":\"1\",\"font_repositories\":\"3\",\"forms\\/lists\":\"19\",\"graphs\\/visual_data\":\"3\",\"grids\\/frameworks\":\"8\",\"images\\/fancy_images\":\"6\",\"image_editors\":\"2\",\"image_repositories\":\"1\",\"info\\/modal_scripts\":\"4\",\"irc_code\":\"1\",\"json\":\"2\",\"js_design\":\"4\",\"lorem_ipsum\":\"6\",\"minification\\/obfucsation\":\"2\",\"obfuscators\\/minifiers\":\"3\",\"odds_and_ends\":\"83\",\"performance\\/testing\":\"13\",\"proof_of_skill\":\"3\",\"reset\\/normalize_css\":\"5\",\"sandbox\":\"13\",\"templating\":\"4\",\"testing\\/iteration_(personal)\":\"4\",\"testing\\/page_analysis\\/profiling\":\"10\",\"to_read\":\"82\",\"typography\":\"4\",\"ux\\/presentation_odds_and_ends\":\"14\",\"validation\":\"3\",\"validators\\/lint\":\"7\",\"web_dev_code\":\"2339\",\"web_dev_refs\":\"240\",\"web_dev_tips\":\"113\",\"web_dev_tools\":\"238\"}\t"
+  },
+  "pastRequestKeys": [
+    "GET_%2Fv1%2Fposts%2Fadd%3Fauth_token_9738b2604a70614a2893f853a41488e9",
+    "GET_%2Fv1%2Ftags%2Fget%3Fauth_token%_173436bfc92804451de866a549f08e1e"
+  ]
+}
