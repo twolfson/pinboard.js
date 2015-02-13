@@ -27,25 +27,50 @@ describe('A pinboard.js user creating a post', function () {
     });
   });
 
-  describe.skip('and retrieving the post', function () {
+  describe('and retrieving the post', function () {
+    pinboardUtils.execRequest(function buildUrl (done) {
+      this.client.postsGet({
+        url: 'http://notavalidwebsite.com/',
+        format: 'json'
+      }, done);
+    });
+
     it('receives the original post', function () {
       expect(this.err).to.equal(null);
       expect(this.res.statusCode).to.equal(200);
-      expect(JSON.parse(this.body)).to.equal(200);
+      expect(JSON.parse(this.body)).to.have.property('posts');
+      expect(JSON.parse(this.body).posts).to.have.length(1);
     });
 
-    describe.skip('and deleting the post', function () {
+    describe('and deleting the post', function () {
+      pinboardUtils.execRequest(function buildUrl (done) {
+        this.client.postsDelete({
+          url: 'http://notavalidwebsite.com/',
+          format: 'json'
+        }, done);
+      });
+
       it('deletes the post', function () {
         expect(this.err).to.equal(null);
         expect(this.res.statusCode).to.equal(200);
-        expect(JSON.parse(this.body)).to.equal(200);
+        expect(JSON.parse(this.body)).to.deep.equal({
+          result_code: 'done'
+        });
       });
 
-      describe.skip('and retrieving the deleted post', function () {
+      describe('and retrieving the deleted post', function () {
+        pinboardUtils.execRequest(function buildUrl (done) {
+          this.client.postsGet({
+            url: 'http://notavalidwebsite.com/',
+            format: 'json'
+          }, done);
+        });
+
         it('retrieves nothing', function () {
           expect(this.err).to.equal(null);
           expect(this.res.statusCode).to.equal(200);
-          expect(JSON.parse(this.body)).to.equal(200);
+          expect(JSON.parse(this.body)).to.have.property('posts');
+          expect(JSON.parse(this.body).posts).to.have.length(0);
         });
       });
     });

@@ -7,17 +7,17 @@
     },
     "trailers": {},
     "method": "GET",
-    "url": "/v1/posts/add?auth_token=*%3A*&url=http%3A%2F%2Fnotavalidwebsite.com%2F&description=Test%20bookmark%20for%20%60pinboard.js%60&format=json",
+    "url": "/v1/posts/get?auth_token=*%3A*&url=http%3A%2F%2Fnotavalidwebsite.com%2F&format=json",
     "bodyEncoding": "utf8",
     "body": ""
   },
   "response": {
     "httpVersion": "1.1",
     "headers": {
-      "date": "Fri, 13 Feb 2015 06:46:19 GMT",
+      "date": "Fri, 13 Feb 2015 06:46:21 GMT",
       "server": "Apache/2.2.22 (Ubuntu)",
       "vary": "Accept-Encoding",
-      "content-length": "23",
+      "content-length": "61",
       "keep-alive": "timeout=5, max=100",
       "connection": "Keep-Alive",
       "content-type": "text/plain; charset=utf-8"
@@ -25,9 +25,12 @@
     "trailers": {},
     "statusCode": 200,
     "bodyEncoding": "utf8",
-    "body": "{\"result_code\":\"done\"}\n"
+    "body": "{\"date\":\"2013-04-01T06:31:50Z\",\"user\":\"twolfson\",\"posts\":[]}\t"
   },
   "pastRequestKeys": [
-    "GET_%2Fv1%2Fposts%2Fadd%3Fauth_token_3620612624aabf08308c7aba77132549"
+    "GET_%2Fv1%2Fposts%2Fadd%3Fauth_token_3620612624aabf08308c7aba77132549",
+    "GET_%2Fv1%2Fposts%2Fget%3Fauth_token_ca77820d143ccabfcfaafe70545ecddf",
+    "GET_%2Fv1%2Fposts%2Fdelete%3Fauth_to_dfe97997985ce6752cb7532a1cadbc76",
+    "GET_%2Fv1%2Fposts%2Fget%3Fauth_token_06276218a879a54666094db2a6ef95de"
   ]
 }
