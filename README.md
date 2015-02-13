@@ -116,8 +116,63 @@ pinboard.postsUpdate({
 ```
 
 ### `pinboard.postsUpdate(options, cb)`
+Returns the most recent time a bookmark was added, updated, or deleted
+
+https://pinboard.in/api#posts_update
 
 - See [Methods](#methods) for `options` and `cb` documentation
+
+### `postsAdd(options, cb)`
+Add a new bookmark
+
+https://pinboard.in/api#posts_add
+
+### `postsDelete(options, cb)`
+https://pinboard.in/api#posts_delete
+
+### `postsGet(options, cb)`
+https://pinboard.in/api#posts_get
+
+### `postsRecent(options, cb)`
+https://pinboard.in/api#posts_recent
+
+### `postsDates(options, cb)`
+https://pinboard.in/api#posts_dates
+
+### `postsAll(options, cb)`
+https://pinboard.in/api#posts_all
+
+### `postsSuggest(options, cb)`
+https://pinboard.in/api#posts_suggest
+
+### `tagsGet(options, cb)`
+https://pinboard.in/api/#tags_get
+
+### `tagsDelete(options, cb)`
+https://pinboard.in/api/#tags_delete
+
+### `tagsRename(options, cb)`
+https://pinboard.in/api/#tags_rename
+
+### `userSecret(options, cb)`
+https://pinboard.in/api/#user_secret
+
+### `userApiToken(options, cb)`
+https://pinboard.in/api/#user_api_token
+
+### `notesList(options, cb)`
+https://pinboard.in/api/
+
+> No good link anchor provided.
+
+### `notesId(options, cb)`
+https://pinboard.in/api/
+
+> No good link anchor provided.
+// TODO: Make comment about how this breaks this mold
+// Extract id from options
+var cleanedOptions = xtend({}, options);
+delete cleanedOptions.id;
 
 TODO: Build browser.js for dist
 
