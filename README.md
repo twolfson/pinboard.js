@@ -30,7 +30,54 @@ pinboard.postsUpdate({
 ```
 
 ## Documentation
-_(Coming soon)_
+`pinboard.js` exposes `Pinboard` as its `module.exports`.
+
+### `new Pinboard(params)`
+Creates a new Pinboard client
+
+- params `Object` - Container for parameters
+    - auth `Object` - Container for authentication info
+        - type `String` - Type of authentication to use
+            - This can be `http` (username + password) or `token` (username + API token)
+            - By default, we use `token` based authentication
+        - username `String` - Username to authenticate with
+        - password `String` - Password to use for `http` authentication
+            - If you are performing `token` auth, then this is not required
+            - This is the password you use to log in to Pinboard
+        - token `String` - Password to use for `token` authentication
+            - If you are performing `http` auth, then this is not required
+            - This is the second half of the token provided on https://pinboard.in/settings/password
+                - For example, if the page lists "twolfson:abcd", then your token is "abcd"
+- url `Object` - URL parameters to use instead of normal Pinboard url
+    - This should be in the format expected by `node's url.format` method (e.g. `protocol`, `hostname`, `pathname`)
+        - http://nodejs.org/api/url.html#url_url_format_urlobj
+    - By default, this is `{protocol: 'https:', hostname: 'api.pinboard.in', pathname: '/v1'}`
+
+**Using token auth:**
+
+```js
+// API token can be found at: https://pinboard.in/settings/password
+new Pinboard({
+  auth: {
+    type: 'token',
+    username: 'your-username',
+    token: 'your-token'
+  }
+});
+```
+
+**Using http auth:**
+
+```js
+// Credentials are the same you use to log in with
+new Pinboard({
+  auth: {
+    type: 'http',
+    username: 'your-username',
+    password: 'your-password'
+  }
+});
+```
 
 TODO: Document `format: json`
 
