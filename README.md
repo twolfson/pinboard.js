@@ -9,6 +9,7 @@ This was written as part of [`firefox-pinboard`][] to communicate with [Pinboard
 [`firefox-pinboard`]: https://github.com/twolfson/firefox-pinboard
 
 ## Getting Started
+### npm
 Install the module with: `npm install pinboard.js`
 
 ```js
@@ -27,6 +28,32 @@ var pinboard = new Pinboard({
 pinboard.postsUpdate({
   format: 'json'
 }, console.log); // {"update_time":"2015-02-13T09:08:22Z"}
+```
+
+### bower
+Install the module with: `bower install pinboard.js`
+
+Once installed, add it to your HTML and access it via `window.Pinboard`.
+
+```html
+<script src="bower_components/pinboard.js/dist/pinboard.min.js"></script>
+<script>
+  window.pinboard = new window.Pinboard({auth: {/*...*/}); // Our Pinboard client
+</script>
+```
+
+### Vanilla
+If you are not using a package manager, download the latest script at:
+
+https://raw.githubusercontent.com/twolfson/pinboard.js/master/dist/pinboard.min.js
+
+Then, add it to your HTML and access it via `window.Pinboard`.
+
+```html
+<script src="pinboard.min.js"></script>
+<script>
+  window.pinboard = new window.Pinboard({auth: {/*...*/}); // Our Pinboard client
+</script>
 ```
 
 ## Documentation
