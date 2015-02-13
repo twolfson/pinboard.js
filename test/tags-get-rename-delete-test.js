@@ -6,6 +6,14 @@ var pinboardUtils = require('./utils/pinboard');
 
 // Start our tests
 describe('A pinboard.js user creating a post', function () {
+  // DEV: We must run our after before other afters
+  pinboardUtils._execRequest(after, function buildUrl (done) {
+    this.client.postsDelete({
+      url: 'http://notavalidwebsite.com/tags',
+      format: 'json'
+    }, done);
+  });
+
   fakePinboard.runSeries('tests-get-rename-delete', ['ALL * *']);
   pinboardUtils.init({
     auth: config.credentials,
@@ -16,12 +24,6 @@ describe('A pinboard.js user creating a post', function () {
       url: 'http://notavalidwebsite.com/tags',
       description: 'Test bookmark for verifying tags on `pinboard.js`',
       tags: 'test-tag',
-      format: 'json'
-    }, done);
-  });
-  pinboardUtils._execRequest(after, function buildUrl (done) {
-    this.client.postsDelete({
-      url: 'http://notavalidwebsite.com/tags',
       format: 'json'
     }, done);
   });
@@ -76,8 +78,9 @@ describe('A pinboard.js user creating a post', function () {
         it('has no errors', function () {
           expect(this.err).to.equal(null);
           expect(this.res.statusCode).to.equal(200);
+          // TODO: Make note of inconsistent `result` response key
           expect(JSON.parse(this.body)).to.deep.equal({
-            result_code: 'done'
+            result: 'done'
           });
         });
       });
