@@ -18,12 +18,12 @@ describe('A pinboard.js user creating a post', function () {
       format: 'json'
     }, done);
   });
-  after(pinboardUtils.execRequest(function buildUrl (done) {
+  pinboardUtils._execRequest(after, function buildUrl (done) {
     this.client.postsDelete({
       url: 'http://notavalidwebsite.com/tags',
       format: 'json'
     }, done);
-  }));
+  });
 
   it('generates a post', function () {
     expect(this.err).to.equal(null);
