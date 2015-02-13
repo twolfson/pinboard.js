@@ -1,0 +1,30 @@
+{
+  "request": {
+    "httpVersion": "1.1",
+    "headers": {
+      "host": "localhost:9001",
+      "connection": "keep-alive"
+    },
+    "trailers": {},
+    "method": "GET",
+    "url": "/v1/posts/suggest?auth_token=*%3A*&url=https%3A%2F%2Fpinboard.in%2F&format=json",
+    "bodyEncoding": "utf8",
+    "body": ""
+  },
+  "response": {
+    "httpVersion": "1.1",
+    "headers": {
+      "date": "Fri, 13 Feb 2015 08:02:58 GMT",
+      "server": "Apache/2.2.22 (Ubuntu)",
+      "vary": "Accept-Encoding",
+      "content-length": "141",
+      "keep-alive": "timeout=5, max=100",
+      "connection": "Keep-Alive",
+      "content-type": "text/plain; charset=utf-8"
+    },
+    "trailers": {},
+    "statusCode": 200,
+    "bodyEncoding": "utf8",
+    "body": "[{\"popular\":[]},{\"recommended\":[\"bookmarking\",\"Bookmarks_bar\",\"pinboard\",\"bookmarks\",\"social\",\"bookmark\",\"tools\",\"web\",\"delicious\",\"apps\"]}]\t"
+  }
+}
