@@ -53,6 +53,30 @@ fakePinboard.addFixture('GET 200 /v1/posts/update', {
   }
 });
 
+fakePinboard.addFixture('GET 200 /v1/tags/get', {
+  method: 'get',
+  route: '/v1/tags/get',
+  response: function fakeTagsGet (localReq, localRes) {
+    // Forward the request
+    pinboardNineTrack.forwardRequest(localReq, function handleResponse (err, remoteRes, remoteBody) {
+      // If there is an error, throw it
+      if (err) {
+        throw err;
+      }
+
+      // Otherwise, adjust the body
+      var remoteJson = JSON.parse(remoteBody);
+      if (typeof remoteJson === 'object') {
+        // Add in our expected tag
+        remoteJson['test-tag'] = 1;
+      }
+
+      // Send back our response
+      localRes.json(remoteJson);
+    });
+  }
+});
+
 // Add a method to proxy anything
 fakePinboard.addFixture('ALL * *', {
   method: 'all',

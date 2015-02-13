@@ -14,7 +14,8 @@ describe('A pinboard.js user creating a post', function () {
     }, done);
   });
 
-  fakePinboard.runSeries('tests-get-rename-delete', ['ALL * *']);
+  // DEV: Adjust `/tags/get` response since there is a lag between save/indexing
+  fakePinboard.runSeries('tests-get-rename-delete', ['GET 200 /v1/tags/get', 'ALL * *']);
   pinboardUtils.init({
     auth: config.credentials,
     url: config.fakePinboardUrl
@@ -33,19 +34,6 @@ describe('A pinboard.js user creating a post', function () {
     expect(this.res.statusCode).to.equal(200);
     expect(JSON.parse(this.body)).to.deep.equal({
       result_code: 'done'
-    });
-  });
-
-  describe('and retrieving the post', function () {
-    pinboardUtils.execRequest(function buildUrl (done) {
-      this.client.postsGet({
-        url: 'http://notavalidwebsite.com/tags',
-        format: 'json'
-      }, done);
-    });
-
-    it('looks fine', function () {
-      console.log(this.body);
     });
   });
 
