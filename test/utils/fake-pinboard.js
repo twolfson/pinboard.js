@@ -91,7 +91,7 @@ fakePinboard.addFixture('GET 200 /v1/user/secret', {
       if (info.response) {
         var responseJson = JSON.parse(info.response.body);
         if (responseJson.result !== undefined) {
-          responseJson.result = 'abcdef';
+          responseJson.result = responseJson.replace(/./g, 'a');
         }
         info.response.body = JSON.stringify(responseJson);
       }
