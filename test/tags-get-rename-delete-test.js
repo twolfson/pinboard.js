@@ -63,7 +63,6 @@ describe('A pinboard.js user creating a post', function () {
       it('has no errors', function () {
         expect(this.err).to.equal(null);
         expect(this.res.statusCode).to.equal(200);
-        // TODO: Make note of inconsistent `result` response key
         expect(JSON.parse(this.body)).to.deep.equal({
           result: 'done'
         });
@@ -80,7 +79,6 @@ describe('A pinboard.js user creating a post', function () {
         it('has no errors', function () {
           expect(this.err).to.equal(null);
           expect(this.res.statusCode).to.equal(200);
-          // TODO: Make note of inconsistent `result` response key
           expect(JSON.parse(this.body)).to.deep.equal({
             result: 'done'
           });
