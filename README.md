@@ -94,6 +94,18 @@ The function signature will consistently be:
         - This can be `json` or `xml`
         - We will not parse the output content (e.g. JSON will be a `String`)
         - By default, Pinboard will return `xml`
+- cb `Function` - Response handler
+    - `cb` should have a signature of `(err, res, body)`
+        - We leverage `request` so the format of each item is the same
+            - https://github.com/request/request
+    - err `Error|null` - If an error occurred, then this will be it
+        - For example, if the server is down, then this can be an `ECONNREFUSED` error
+    - res `Object` - Response message from server
+        - statusCode `Number` - Status code for response (e.g. `200` for success)
+        - headers `Object` - Container for response headers
+        - Further information can be found in http://nodejs.org/api/http.html#http_http_incomingmessage
+    - body `String` - Body from response
+        - If `json` was requested via `format`, then this will be JSON. Otherwise, it will be XML.
 
 **Example request for JSON:**
 
@@ -103,10 +115,11 @@ pinboard.postsUpdate({
 }, console.log); // {"update_time":"2015-02-13T09:08:22Z"}
 ```
 
-TODO: Build browser.js for dist
+### `pinboard.postsUpdate(options, cb)`
 
-## Examples
-_(Coming soon)_
+- See [Methods](#methods) for `options` and `cb` documentation
+
+TODO: Build browser.js for dist
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via `npm run lint` and test via `npm test`.
