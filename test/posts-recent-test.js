@@ -12,7 +12,10 @@ describe('A pinboard.js user retrieving recent posts', function () {
     url: config.fakePinboardUrl
   });
   pinboardUtils.execRequest(function buildUrl (done) {
-    this.client.postsRecent({format: 'json'}, done);
+    this.client.postsRecent({
+      count: 1,
+      format: 'json'
+    }, done);
   });
 
   it('receives a posts', function () {
