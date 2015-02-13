@@ -1,7 +1,7 @@
 {
   "name": "pinboard.js",
   "description": "Library for talking to the Pinboard API",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/twolfson/pinboard.js",
   "author": {
     "name": "Todd Wolfson",
